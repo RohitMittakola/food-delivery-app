@@ -33,5 +33,17 @@ services:
     depends_on:
       - backend
 
+  ai-microservice:
+    image: rohitmittakola/brobite-ai:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - DB_HOST=brobite-db
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=rohit
+      - DB_NAME=food_delivery
+
 volumes:
   db_data:
