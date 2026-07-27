@@ -11,7 +11,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "http://16.16.76.27:5000/api/auth/login",
         formData,
       );
       // Save the secure token and user ID to the browser!

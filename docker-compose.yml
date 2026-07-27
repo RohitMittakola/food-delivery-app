@@ -1,0 +1,37 @@
+services:
+  # 1. The Database Tier
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rohit
+      MYSQL_DATABASE: food_delivery
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  # 2. The Logic Tier
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      # Docker injects these over your local .env and database.js defaults
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=rohit
+      - DB_NAME=food_delivery
+      - JWT_SECRET=brobite_super_secret_key_123
+    depends_on:
+      - db
+
+  # 3. The Presentation Tier
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  db_data:

@@ -14,7 +14,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/auth/register", formData);
+      await axios.post("http://16.16.76.27:5000/api/auth/register", formData);
       navigate("/login"); // Send them to login after successful signup!
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong");

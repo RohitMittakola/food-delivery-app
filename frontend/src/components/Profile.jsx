@@ -17,7 +17,7 @@ const Profile = () => {
 
         const fetchUserProfile = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/auth/profile/${userId}`);
+                const res = await axios.get(`http://16.16.76.27:5000/api/auth/profile/${userId}`);
                 setUserData(res.data);
             } catch (error) {
                 console.error("Failed to fetch profile", error);

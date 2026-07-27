@@ -12,7 +12,7 @@ const Menu = ({ addToCart, userId }) => {
   useEffect(() => {
     const fetchFoods = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/food/");
+        const res = await axios.get("http://16.16.76.27:5000/api/food/");
         console.log("Foods fetched:", res.data);
         setFoods(res.data);
         setFilteredFoods(res.data);

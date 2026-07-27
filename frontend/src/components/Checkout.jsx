@@ -20,7 +20,7 @@ const Checkout = ({ userId }) => {
   const fetchCart = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`http://localhost:5000/api/cart/${userId}`);
+      const res = await axios.get(`http://16.16.76.27:5000/api/cart/${userId}`);
       console.log("Cart fetched:", res.data);
       setCart(res.data);
       setError("");
@@ -39,7 +39,7 @@ const Checkout = ({ userId }) => {
     }
 
     try {
-      await axios.put(`http://localhost:5000/api/cart/item/${cartItemId}`, {
+      await axios.put(`http://16.16.76.27:5000/api/cart/item/${cartItemId}`, {
         quantity: newQuantity,
       });
       fetchCart();
@@ -51,7 +51,7 @@ const Checkout = ({ userId }) => {
 
   const handleRemoveItem = async (cartItemId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/cart/item/${cartItemId}`);
+      await axios.delete(`http://16.16.76.27:5000/api/cart/item/${cartItemId}`);
       fetchCart();
     } catch (err) {
       console.error("Error removing item:", err);
@@ -62,7 +62,7 @@ const Checkout = ({ userId }) => {
   const handleClearCart = async () => {
     if (window.confirm("Are you sure you want to clear the cart?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/cart/clear/${userId}`);
+        await axios.delete(`http://16.16.76.27:5000/api/cart/clear/${userId}`);
         fetchCart();
       } catch (err) {
         console.error("Error clearing cart:", err);

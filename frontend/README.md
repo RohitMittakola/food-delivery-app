@@ -72,7 +72,7 @@ npm run dev
 ##Access the App
 
 - Frontend: http://localhost:5173
-- Backend: http://localhost:5000
+- Backend: http://16.16.76.27:5000
 
 ---
 

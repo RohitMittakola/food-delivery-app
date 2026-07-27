@@ -25,7 +25,7 @@ const ChatWidget = () => {
 
         try {
             // NOTE: If you are testing on your phone, change localhost to your IPv4 address!
-            const response = await fetch("http://localhost:8000/chat", {
+            const response = await fetch("http://16.16.76.27:8000/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

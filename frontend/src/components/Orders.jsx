@@ -22,7 +22,7 @@ const Orders = ({ userId }) => {
   const fetchOrders = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`http://localhost:5000/api/orders/${userId}`);
+      const res = await axios.get(`http://16.16.76.27:5000/api/orders/${userId}`);
       console.log("Orders fetched:", res.data);
       setOrders(res.data);
       setError("");

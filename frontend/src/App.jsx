@@ -116,7 +116,7 @@ function App() {
   const fetchCartCount = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/cart/count/${userId}`,
+        `http://16.16.76.27:5000/api/cart/count/${userId}`,
       );
       setCartCount(res.data.count);
     } catch (error) {
@@ -131,7 +131,7 @@ function App() {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/cart/add", {
+      await axios.post("http://16.16.76.27:5000/api/cart/add", {
         userId: parseInt(userId),
         foodItemId: food.id,
         quantity: 1,

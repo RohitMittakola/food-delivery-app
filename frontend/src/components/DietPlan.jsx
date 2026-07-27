@@ -22,7 +22,7 @@ const DietPlan = ({ addToCart }) => {
   const fetchRecommendations = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/recommendations/${userId}`,
+        `http://16.16.76.27:5000/api/recommendations/${userId}`,
       );
       setDietData(res.data);
       setError("");
@@ -49,7 +49,7 @@ const DietPlan = ({ addToCart }) => {
     setLoading(true);
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/auth/profile/${userId}`,
+        `http://16.16.76.27:5000/api/auth/profile/${userId}`,
         profile,
       );
       console.log("Profile update response:", response.data);

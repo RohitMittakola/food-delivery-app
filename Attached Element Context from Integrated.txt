@@ -1,0 +1,60 @@
+Attached Element Context from Integrated Browser
+
+Element: div.lg:grid.lg:grid-cols-12.lg:gap-8
+
+URL: http://localhost:5173/
+
+HTML Path: div#root > div.min-h-screen.bg-gray-50.font-sans > div.flex.flex-col > section.relative.bg-white.pt-16.pb-20.lg:pt-24.lg:pb-28 > div.max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8 > div.lg:grid.lg:grid-cols-12.lg:gap-8
+
+Outer HTML:
+```html
+<div class="lg:grid lg:grid-cols-12 lg:gap-8"><div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left"><h1><span class="block text-sm font-semibold uppercase tracking-wide text-orange-600">AI-Powered Nutrition</span><span class="mt-1 block text-4xl tracking-tight font-black sm:text-5xl xl:text-6xl"><span class="block text-gray-900">Eat Smarter,</span><span class="block text-orange-600">Live Better.</span></span></h1><p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">The first food delivery app that understands your body. Get personalized meal recommendations based on your BMI and health goals.</p><div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0 flex flex-col sm:flex-row gap-4"><button class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-full text-white bg-gray-900 hover:bg-gray-800 md:py-4 md:text-lg md:px-10 transition-all shadow-lg hover:shadow-xl">Order Now</button><button class="inline-flex items-center justify-center px-8 py-3 border border-gray-200 text-base font-bold rounded-full text-gray-700 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10 transition-all">Check AI Plan</button></div></div><div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center"><div class="relative mx-auto w-full rounded-3xl shadow-2xl overflow-hidden"><img class="w-full" alt="Healthy Food" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80"></div></div></div>
+```
+
+Dimensions:
+- top: 129px
+- left: 24px
+- width: 752px
+- height: 679px
+
+CSS:
+```css
+*, ::after, ::before, ::backdrop, ::file-selector-button { box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid; }
+.lg\:grid { @media (width >= 64rem) {
+      display: grid;
+    } }
+.lg\:grid-cols-12 { @media (width >= 64rem) {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    } }
+.lg\:gap-8 { @media (width >= 64rem) {
+      gap: calc(var(--spacing) * 8);
+    } }
+
+/* Inherited */
+.font-sans { font-family: var(--font-sans) }
+html, :host { line-height: 1.5; tab-size: 4; font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"); font-feature-settings: var(--default-font-feature-settings, normal) }
+
+/* Resolved values */
+margin: 0px;
+padding: 0px;
+border: 0px solid rgb(0, 0, 0);
+box-sizing: border-box;
+display: block;
+font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+font-feature-settings: normal;
+height: 679.111px;
+line-height: 24px;
+tab-size: 4;
+unicode-bidi: isolate /*UA*/;
+width: 752px;
+
+/* CSS variables */
+--spacing: 0.25rem;
+--font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+--default-font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+```
