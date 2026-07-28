@@ -48,7 +48,8 @@ const AdminDashboard = () => {
                 setIsLoading(false);
                 fetchData();
             } catch (err) {
-                navigate("/");
+                // navigate("/");
+                setIsLoading(false);
             }
         };
         verify();
