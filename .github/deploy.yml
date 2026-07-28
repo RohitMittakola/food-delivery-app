@@ -1,0 +1,28 @@
+name: Deploy BroBite to AWS
+
+# 1. This tells GitHub to run the script ONLY when you push to the 'main' branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Connect to AWS and Deploy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          # 2. These are the exact terminal commands GitHub will run on your server
+          script: |
+            cd ~/brobite
+            
+            # Pull the latest code (if your server is connected to git)
+            git pull origin main
+            
+            # Rebuild and restart any updated containers
+            sudo docker compose up -d --build --force-recreate
