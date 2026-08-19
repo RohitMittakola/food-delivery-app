@@ -26,7 +26,7 @@ app.add_middleware(
 # Initialize the Groq Model
 llm = ChatGroq(
     groq_api_key=os.getenv("GROQ_API_KEY"),
-    model_name="llama-3.1-8b-instant",
+    model_name="qwen-3.6-27b"
     temperature=0.7
 )
 
