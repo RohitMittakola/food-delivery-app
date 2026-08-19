@@ -34,7 +34,10 @@ services:
       - backend
 
   ai-microservice:
+    build: ./ai-microservice     # <--- 1. ADD THIS TO FORCE LOCAL BUILD
     image: rohitmittakola/brobite-ai:latest
+    environment:                 # <--- 2. ADD THIS TO FIX THE MYSQL CRASH
+      - DB_HOST=db
     ports:
       - "8000:8000"
     environment:
