@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 const AdminDashboard = () => {
     const navigate = useNavigate();
@@ -25,13 +26,13 @@ const AdminDashboard = () => {
             const config = { headers: { Authorization: `Bearer ${token}` } };
 
             if (activeTab === "menu") {
-                const res = await axios.get("http://16.16.76.27:5000/api/food");
+                const res = await axios.get(`${API_BASE_URL}/api/food`);
                 setMenuItems(res.data);
             } else if (activeTab === "orders") {
-                const res = await axios.get("http://16.16.76.27:5000/api/admin/orders", config);
+                const res = await axios.get(`${API_BASE_URL}/api/admin/orders`, config);
                 setOrders(res.data);
             } else if (activeTab === "users") {
-                const res = await axios.get("http://16.16.76.27:5000/api/admin/users", config);
+                const res = await axios.get(`${API_BASE_URL}/api/admin/users`, config);
                 setUsers(res.data);
             }
         } catch (err) {
@@ -42,7 +43,7 @@ const AdminDashboard = () => {
     useEffect(() => {
         const verify = async () => {
             try {
-                await axios.get("http://16.16.76.27:5000/api/admin/verify", {
+                await axios.get(`${API_BASE_URL}/api/admin/verify`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setIsLoading(false);
@@ -58,7 +59,7 @@ const AdminDashboard = () => {
     const handleAddFood = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://16.16.76.27:5000/api/admin/food", newFood, {
+            await axios.post(`${API_BASE_URL}/api/admin/food`, newFood, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setShowModal(false);
@@ -72,7 +73,7 @@ const AdminDashboard = () => {
     // THE NEW ADMIN SUPERPOWER: Update Order Status
     const handleUpdateOrderStatus = async (orderId, newStatus) => {
         try {
-            await axios.put(`http://16.16.76.27:5000/api/admin/orders/${orderId}/status`,
+            await axios.put(`${API_BASE_URL}/api/admin/orders/${orderId}/status`,
                 { status: newStatus },
                 { headers: { Authorization: `Bearer ${token}` } }
             );

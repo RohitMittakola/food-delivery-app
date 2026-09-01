@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { AI_BASE_URL } from "../config";
 
 const ChatWidget = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +26,7 @@ const ChatWidget = () => {
 
         try {
             // NOTE: If you are testing on your phone, change localhost to your IPv4 address!
-            const response = await fetch("http://16.16.76.27:8000/chat", {
+            const response = await fetch(`${AI_BASE_URL}/chat`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -65,7 +66,10 @@ const ChatWidget = () => {
                     <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
                         {messages.map((msg, index) => (
                             <div key={index} className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
-                                <div className={`max-w-[80%] p-3 rounded-2xl text-sm ${msg.sender === "user" ? "bg-orange-600 text-white rounded-br-none" : "bg-white border border-gray-200 text-gray-800 rounded-bl-none shadow-sm"}`}>
+                                <div
+                                    className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed break-words ${msg.sender === "user" ? "bg-orange-600 text-white rounded-br-none" : "bg-white border border-gray-200 text-gray-800 rounded-bl-none shadow-sm"}`}
+                                    style={{ whiteSpace: "pre-line" }}
+                                >
                                     {msg.text}
                                 </div>
                             </div>

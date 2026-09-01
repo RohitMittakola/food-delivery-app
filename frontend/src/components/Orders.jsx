@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import DeliveryMap from "./DeliveryMap";
+import { API_BASE_URL } from "../config";
 
 const Orders = ({ userId }) => {
   const [orders, setOrders] = useState([]);
@@ -22,7 +23,7 @@ const Orders = ({ userId }) => {
   const fetchOrders = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`http://16.16.76.27:5000/api/orders/${userId}`);
+      const res = await axios.get(`${API_BASE_URL}/api/orders/${userId}`);
       console.log("Orders fetched:", res.data);
       setOrders(res.data);
       setError("");

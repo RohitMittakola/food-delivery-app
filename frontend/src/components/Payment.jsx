@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 const Payment = ({ userId }) => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const Payment = ({ userId }) => {
     setPaying(true);
     setError("");
     try {
-      await axios.post(`http://16.16.76.27:5000/api/orders/${userId}`);
+      await axios.post(`${API_BASE_URL}/api/orders/${userId}`);
       navigate("/orders", { state: { justOrdered: true } });
     } catch (err) {
       setError(err.response?.data?.message || "Failed to place order. Try again.");

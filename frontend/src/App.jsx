@@ -12,6 +12,7 @@ import Menu from "./components/Menu";
 import Checkout from "./components/Checkout";
 import Orders from "./components/Orders";
 import Payment from "./components/Payment";
+import { API_BASE_URL } from "./config";
 
 const Home = () => {
   return (
@@ -116,7 +117,7 @@ function App() {
   const fetchCartCount = async () => {
     try {
       const res = await axios.get(
-        `http://16.16.76.27:5000/api/cart/count/${userId}`,
+        `${API_BASE_URL}/api/cart/count/${userId}`,
       );
       setCartCount(res.data.count);
     } catch (error) {
@@ -131,7 +132,7 @@ function App() {
     }
 
     try {
-      await axios.post("http://16.16.76.27:5000/api/cart/add", {
+      await axios.post(`${API_BASE_URL}/api/cart/add`, {
         userId: parseInt(userId),
         foodItemId: food.id,
         quantity: 1,

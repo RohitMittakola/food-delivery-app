@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 const Profile = () => {
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ const Profile = () => {
 
         const fetchUserProfile = async () => {
             try {
-                const res = await axios.get(`http://16.16.76.27:5000/api/auth/profile/${userId}`);
+                const res = await axios.get(`${API_BASE_URL}/api/auth/profile/${userId}`);
                 setUserData(res.data);
             } catch (error) {
                 console.error("Failed to fetch profile", error);

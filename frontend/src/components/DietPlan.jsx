@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 const DietPlan = ({ addToCart }) => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const DietPlan = ({ addToCart }) => {
   const fetchRecommendations = async () => {
     try {
       const res = await axios.get(
-        `http://16.16.76.27:5000/api/recommendations/${userId}`,
+        `${API_BASE_URL}/api/recommendations/${userId}`,
       );
       setDietData(res.data);
       setError("");
@@ -49,7 +50,7 @@ const DietPlan = ({ addToCart }) => {
     setLoading(true);
     try {
       const response = await axios.put(
-        `http://16.16.76.27:5000/api/auth/profile/${userId}`,
+        `${API_BASE_URL}/api/auth/profile/${userId}`,
         profile,
       );
       console.log("Profile update response:", response.data);

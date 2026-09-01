@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 const Menu = ({ addToCart, userId }) => {
   const [foods, setFoods] = useState([]);
@@ -12,7 +13,7 @@ const Menu = ({ addToCart, userId }) => {
   useEffect(() => {
     const fetchFoods = async () => {
       try {
-        const res = await axios.get("http://16.16.76.27:5000/api/food/");
+        const res = await axios.get(`${API_BASE_URL}/api/food/`);
         console.log("Foods fetched:", res.data);
         setFoods(res.data);
         setFilteredFoods(res.data);
