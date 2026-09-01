@@ -1,4 +1,7 @@
 import os
+import re
+from pathlib import Path
+
 import aiomysql
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -9,8 +12,15 @@ from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-# Load Environment Variables
-load_dotenv()
+# Load Environment Variables from this microservice folder explicitly
+BASE_DIR = Path(__file__).resolve().parent
+load_dotenv(BASE_DIR / ".env")
+
+os.environ.setdefault("DB_HOST", "localhost")
+os.environ.setdefault("DB_PORT", "3306")
+os.environ.setdefault("DB_USER", "root")
+os.environ.setdefault("DB_PASSWORD", "rohit")
+os.environ.setdefault("DB_NAME", "food_delivery")
 
 app = FastAPI()
 
@@ -73,6 +83,13 @@ async def chat_endpoint(request: ChatRequest):
         1. Only recommend items that actually exist on the LIVE MENU above.
         2. If asked about prices, use the ₹ symbol.
         3. Keep responses concise, helpful, and matching a fitness/health vibe.
+        4. Return your answer as clean plain text with line breaks and bullet points using •.
+        5. Use this structure when possible:
+           - Greeting + short recommendation line.
+           - 2 to 4 bullet points listing exact menu items with price, calories, and protein.
+           - One short tip or customization note.
+           - One closing question.
+        6. Never include chain-of-thought, <think> blocks, markdown headers, or long paragraphs.
         """),
         ("human", "User ({user_name}) says: {message}")
     ])
@@ -86,6 +103,7 @@ async def chat_endpoint(request: ChatRequest):
             "message": request.message,
             "user_name": request.user_name
         })
+        response = re.sub(r"<think>.*?</think>\s*", "", response, flags=re.DOTALL | re.IGNORECASE).strip()
         return {"reply": response}
     except Exception as e:
         print(f"🚨 THE EXACT BUG IS: {repr(e)}")
