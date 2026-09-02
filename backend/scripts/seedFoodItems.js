@@ -1,5 +1,6 @@
 const sequelize = require('../config/database');
 const FoodItem = require('../models/FoodItem');
+const CartItem = require('../models/CartItem');
 require('dotenv').config();
 
 const foodItems = [
@@ -33,11 +34,13 @@ async function seedDatabase() {
     await sequelize.sync({ alter: true });
     console.log('✅ Models synced');
 
-    // Clear existing food items (optional)
+    // Remove cart references first because cartitems point to fooditems.
+    await CartItem.destroy({ where: {} });
+    console.log('✅ Cleared cart references to food items');
+
     await FoodItem.destroy({ where: {} });
     console.log('✅ Cleared existing food items');
 
-    // Insert new food items
     const created = await FoodItem.bulkCreate(foodItems);
     console.log(`✅ Successfully added ${created.length} food items!`);
 

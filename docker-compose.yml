@@ -30,6 +30,9 @@ services:
     build: ./frontend
     ports:
       - "5173:5173"
+    environment:
+      - VITE_API_URL=http://16.16.76.27:5000
+      - VITE_AI_URL=http://16.16.76.27:8000
     depends_on:
       - backend
 
